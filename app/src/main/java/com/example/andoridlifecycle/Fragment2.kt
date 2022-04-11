@@ -95,13 +95,11 @@ class Fragment2() : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view_items)
 
-        // Adapter class is initialized and url list is passed.
-        val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
-
-        // Setting up RCV w Grid. PS:Starts with id for recyclerView in xml.
+        // Setting up RCV with Grid.
         recyclerView.layoutManager = GridLayoutManager(context,3)
-       // recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL ,false)
-
+        // Adapter class is initialized and url list is passed.
+        // TODO Tror listOfURls må passes async, altså etter res er kommet.
+        val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
         // adapter instance is set to the recyclerview to inflate the items.
         recyclerView.adapter = itemAdapter
 
