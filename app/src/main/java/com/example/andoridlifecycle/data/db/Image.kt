@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.db
+package com.example.andoridlifecycle.data.db
 
 import android.graphics.Bitmap
 import androidx.room.Entity

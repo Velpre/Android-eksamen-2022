@@ -1,8 +1,8 @@
-package com.example.andoridlifecycle.db
+package com.example.andoridlifecycle.data.db
 
 import android.content.Context
 
-class ImageBlobRepository(context: Context) {
+class ImageRepository(context: Context) {
     var db: ImageDao = AppDatabase.getInstance(context)?.imageDao()!!
 
     //Fetch All the Users
