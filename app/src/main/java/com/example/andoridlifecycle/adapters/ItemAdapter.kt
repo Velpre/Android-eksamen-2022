@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -33,6 +34,7 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
         // her kommer et array av bildeadresser
         val url = urls[position]
         // Glide med url
+
 
         Glide.with(context)
             .load(url)
