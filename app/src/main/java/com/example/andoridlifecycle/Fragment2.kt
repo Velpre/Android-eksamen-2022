@@ -32,25 +32,29 @@ class Fragment2() : Fragment() {
         AndroidNetworking.initialize(context)
 
         // Coroutines
-        lifecycleScope.launch(Dispatchers.IO) {
-            val urls = loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
+        runBlocking {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val urls =
+                    async { loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png") }
 
-           launch(Main){
-               delay(7000)
-               listOfUrls = urls
-               println(listOfUrls.toString())
-               val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
-               val recyclerView: RecyclerView = requireView().findViewById(R.id.recycler_view_items)
-               recyclerView.layoutManager = GridLayoutManager(context,3)
-               recyclerView.adapter = itemAdapter
+                launch(Main) {
+                    delay(5000)
+                    listOfUrls = urls.await()
+                    println(listOfUrls.toString())
+                    val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
+                    val recyclerView: RecyclerView =
+                        requireView().findViewById(R.id.recycler_view_items)
+                    recyclerView.layoutManager = GridLayoutManager(context, 3)
+                    recyclerView.adapter = itemAdapter
 
-           }
+                }
+            }
 
         }
     }// onCreate ends
 
     // Step 1: API CALL
-    private fun loadDataApi(url : String) : ArrayList<String> {
+    private fun loadDataApi(url: String): ArrayList<String> {
 
         AndroidNetworking.get("http://api-edu.gtl.ai/api/v1/imagesearch/bing")
             .addQueryParameter("url", url)
@@ -63,13 +67,14 @@ class Fragment2() : Fragment() {
                             //val url = ImgUrl() - settes til klasse senere?
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("thumbnail_link")
-                           // Log.i("url", url.toString())
+                            // Log.i("url", url.toString())
                             listOfUrls.add(url)
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }
                     }
                 }
+
                 override fun onError(anError: ANError) {
                     Log.e("feil", anError.toString())
                 }
