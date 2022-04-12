@@ -26,7 +26,7 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
-        if(imageURL!==null)
+
         loadDataApi(imageURL)
 
     }// onCreate ends

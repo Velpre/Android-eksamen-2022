@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 )
                 .commit()
         } else {
-            if (this::url.isInitialized) (
+            if (hasServerResponse()) (
                     fragmentManager
                         .beginTransaction()
                         .replace(
@@ -56,14 +56,12 @@ class MainActivity : AppCompatActivity() {
                         )
                         .commit()
                     ) else {
-                Toast.makeText(
-                    applicationContext,
-                    "waiting for server response!",
-                    Toast.LENGTH_LONG
-                ).show()
+                shortToast(applicationContext, "waiting for server response!")
             }
         }
     }
+
+    private fun hasServerResponse() = this::url.isInitialized
 
     fun submit(view: View) {
         var imageUri =

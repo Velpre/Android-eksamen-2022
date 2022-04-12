@@ -47,7 +47,7 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
         return urls.size
     }
 
-     // A ViewHolder describes an item view and metadata about its place within the RecyclerView.
+    // A ViewHolder describes an item view and metadata about its place within the RecyclerView.
     // her må vi hente de elementene vi vil fra via id fra xml fila
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Holder imageView som deklarert med id i custom xml layout
