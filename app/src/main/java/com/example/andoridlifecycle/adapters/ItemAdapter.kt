@@ -35,8 +35,6 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
         val url = urls[position]
         // Glide med url
 
-
-
         Glide.with(context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)

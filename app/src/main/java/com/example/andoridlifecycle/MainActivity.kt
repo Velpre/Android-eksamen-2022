@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(
                     R.id.fragment_main,
-                    Fragment1(),
+                    UploadImageFragment(),
                     "Fragment1"
                 )
                 .commit()
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                         .beginTransaction()
                         .replace(
                             R.id.fragment_main,
-                            Fragment2(url),
+                            SearchResultFragment(url),
                             "Fragment2"
                         )
                         .commit()
@@ -67,12 +67,12 @@ class MainActivity : AppCompatActivity() {
 
     fun submit(view: View) {
         var imageUri =
-            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri.toString()
+            (fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment).imageUri.toString()
         //var rect = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
         //var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.width
         //var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.height
         val croppedImage =
-            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.croppedImage
+            (fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment).image.croppedImage
 
         // sending post to server.
         uploadImage(createFileFromBitmap(croppedImage))

@@ -19,7 +19,7 @@ import org.json.JSONException
 
 
 
-class Fragment2(private var imageURL: String) : Fragment() {
+class SearchResultFragment(private var imageURL: String) : Fragment() {
 
     // global members
     private var listOfUrls = ArrayList<String>()

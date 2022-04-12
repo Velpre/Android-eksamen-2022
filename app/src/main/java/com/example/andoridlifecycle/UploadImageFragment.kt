@@ -10,7 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.edmodo.cropper.CropImageView
 
-class Fragment1 : Fragment() {
+class UploadImageFragment : Fragment() {
 
     public lateinit var image: CropImageView
     public var imageUri: String? = null
