@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.item_custom_row.view.*
 class ItemAdapter(private val context: Context, private val urls: ArrayList<String>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
+
     /**
      * Inflates the custom view which is designed in xml layout file
      */
@@ -30,13 +31,9 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
 
     //Binder alle items i ArrayListen , som er urls, til en Imageview
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         // her kommer et array av bildeadresser
         val url = urls[position]
         // Glide med url
-
-
-
         Glide.with(context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -48,7 +45,6 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
     override fun getItemCount(): Int {
         return urls.size
     }
-
      // A ViewHolder describes an item view and metadata about its place within the RecyclerView.
     // her må vi hente de elementene vi vil fra via id fra xml fila
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

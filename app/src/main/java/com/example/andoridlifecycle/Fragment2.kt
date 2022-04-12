@@ -16,7 +16,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener
 import com.example.andoridlifecycle.adapters.ItemAdapter
 import org.json.JSONArray
 import org.json.JSONException
-
+import kotlin.concurrent.thread
 
 
 class Fragment2() : Fragment() {
@@ -27,11 +27,11 @@ class Fragment2() : Fragment() {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
         loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
-
     }// onCreate ends
 
     // Step 1: API CALL
     private fun loadDataApi(url: String) {
+        var temporaryList = ArrayList<String>()
         AndroidNetworking.get("http://api-edu.gtl.ai/api/v1/imagesearch/bing")
             .addQueryParameter("url", url)
             .build()
@@ -41,18 +41,18 @@ class Fragment2() : Fragment() {
                         try {
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("thumbnail_link")
-                            listOfUrls.add(url)
-                            val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
-                            val recyclerView: RecyclerView =
-                                requireView().findViewById(R.id.recycler_view_items)
-                            recyclerView.layoutManager = GridLayoutManager(context, 3)
-                            recyclerView.adapter = itemAdapter
-
+                            temporaryList.add(url)
                         } catch (e: JSONException) {
                             e.printStackTrace()
                             Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
                         }
                     }
+                    listOfUrls = temporaryList
+                    val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
+                    val recyclerView: RecyclerView =
+                        requireView().findViewById(R.id.recycler_view_items)
+                    recyclerView.layoutManager = GridLayoutManager(context, 3)
+                    recyclerView.adapter = itemAdapter
                 }
                 override fun onError(anError: ANError) {
                     Log.e("error in fetching data", anError.toString())
