@@ -16,7 +16,6 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener
 import com.example.andoridlifecycle.adapters.ItemAdapter
 import org.json.JSONArray
 import org.json.JSONException
-import kotlin.concurrent.thread
 
 
 class Fragment2() : Fragment() {
