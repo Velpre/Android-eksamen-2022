@@ -1,10 +1,8 @@
 package com.example.andoridlifecycle
 
 import android.content.Intent
-import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.edmodo.cropper.CropImageView
 
-class Fragment1 : Fragment() {
+class UploadImageFragment : Fragment() {
 
     public lateinit var image: CropImageView
     public var imageUri: String? = null
@@ -29,7 +27,7 @@ class Fragment1 : Fragment() {
         var view = inflater.inflate(R.layout.fragment1, container, false)
 
         image = view.findViewById<CropImageView>(R.id.image)
-        image.setOnClickListener{
+        image.setOnClickListener {
 
             var i = Intent()
 
@@ -42,20 +40,28 @@ class Fragment1 : Fragment() {
         return view
     }
 
-    var startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    var startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
 
-        imageUri = it.data?.data.toString()
 
-        var bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+            imageUri = it.data?.data.toString()
+            println("uri $imageUri")
 
-        image.layoutParams = image.layoutParams.apply {
 
-            width = bitmap_image.width
-            height = bitmap_image.height
+            var bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+
+            image.layoutParams = image.layoutParams.apply {
+
+                width = bitmap_image.width
+                height = bitmap_image.height
+            }
+
+            image.setImageBitmap(bitmap_image)
+            image.background = BitmapDrawable(resources, bitmap_image)
         }
 
-        image.setImageBitmap(bitmap_image)
-        image.background = BitmapDrawable(resources, bitmap_image)
-    }
+
+
+
 
 }
