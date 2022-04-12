@@ -19,14 +19,15 @@ import org.json.JSONException
 
 
 
-class Fragment2() : Fragment() {
+class Fragment2(private var imageURL: String) : Fragment() {
 
     // global members
     private var listOfUrls = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
-        loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
+        if(imageURL!==null)
+        loadDataApi(imageURL)
 
     }// onCreate ends
 

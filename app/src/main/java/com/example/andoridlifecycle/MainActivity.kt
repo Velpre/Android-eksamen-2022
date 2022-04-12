@@ -46,25 +46,33 @@ class MainActivity : AppCompatActivity() {
                 )
                 .commit()
         } else {
-            fragmentManager
-                .beginTransaction()
-                .replace(
-                    R.id.fragment_main,
-                    Fragment2(),
-                    "Fragment2"
-                )
-                .commit()
+            if (this::url.isInitialized) (
+                    fragmentManager
+                        .beginTransaction()
+                        .replace(
+                            R.id.fragment_main,
+                            Fragment2(url),
+                            "Fragment2"
+                        )
+                        .commit()
+                    ) else {
+                Toast.makeText(
+                    applicationContext,
+                    "waiting for server response!",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
-    fun submit(view: View){
-        var imageUri = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri.toString()
+    fun submit(view: View) {
+        var imageUri =
+            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri.toString()
         //var rect = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
         //var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.width
         //var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.height
-        val croppedImage  = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.croppedImage
-
-        var bitmap_image = getBitmap(applicationContext, null, imageUri, ::UriToBitmap)
+        val croppedImage =
+            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.croppedImage
 
         // sending post to server.
         uploadImage(createFileFromBitmap(croppedImage))
@@ -91,6 +99,9 @@ class MainActivity : AppCompatActivity() {
             .getAsString(object : StringRequestListener {
                 override fun onResponse(response: String?) {
                     println("response: $response")
+                    if (response != null) {
+                        url = response
+                    }
                 }
 
                 override fun onError(error: ANError) {
@@ -110,7 +121,7 @@ class MainActivity : AppCompatActivity() {
     * */
     fun createFileFromBitmap(bitmap: Bitmap): File {
         // unsure correct context!!!
-        val f = File(applicationContext.filesDir,"img.png")
+        val f = File(applicationContext.filesDir, "img.png")
 
         f.createNewFile()
 
