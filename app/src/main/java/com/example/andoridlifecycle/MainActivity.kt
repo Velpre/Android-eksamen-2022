@@ -62,11 +62,12 @@ class MainActivity : AppCompatActivity() {
         //var rect = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
         //var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.width
         //var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.height
+        val croppedImage  = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.croppedImage
 
         var bitmap_image = getBitmap(applicationContext, null, imageUri, ::UriToBitmap)
 
         // sending post to server.
-        uploadImage(createFileFromBitmap(bitmap_image))
+        uploadImage(createFileFromBitmap(croppedImage))
 
         Log.i("fileImg", imageUri)
         Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
