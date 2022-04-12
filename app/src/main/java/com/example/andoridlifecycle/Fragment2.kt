@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.androidnetworking.AndroidNetworking
 import kotlinx.coroutines.launch
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,10 +21,13 @@ import kotlinx.coroutines.Dispatchers.Main
 import org.json.JSONArray
 import org.json.JSONException
 
+
+
 class Fragment2() : Fragment() {
 
     // global members
     private var listOfUrls = ArrayList<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,28 +55,25 @@ class Fragment2() : Fragment() {
 
     // Step 1: API CALL
     private fun loadDataApi(url: String): ArrayList<String> {
-
         AndroidNetworking.get("http://api-edu.gtl.ai/api/v1/imagesearch/bing")
             .addQueryParameter("url", url)
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
-
                     for (i in 0 until response.length()) {
                         try {
-                            //val url = ImgUrl() - settes til klasse senere?
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("thumbnail_link")
-                            // Log.i("url", url.toString())
                             listOfUrls.add(url)
                         } catch (e: JSONException) {
                             e.printStackTrace()
+                            Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
-
                 override fun onError(anError: ANError) {
-                    Log.e("feil", anError.toString())
+                    Log.e("error in fetching data", anError.toString())
+                    Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
                 }
             })
         return listOfUrls
