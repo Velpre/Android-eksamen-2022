@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.androidnetworking.AndroidNetworking
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +39,10 @@ class Fragment2() : Fragment() {
                delay(7000)
                listOfUrls = urls
                println(listOfUrls.toString())
+               val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
+               val recyclerView: RecyclerView = requireView().findViewById(R.id.recycler_view_items)
+               recyclerView.layoutManager = GridLayoutManager(context,3)
+               recyclerView.adapter = itemAdapter
 
            }
 
@@ -83,10 +86,6 @@ class Fragment2() : Fragment() {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment2, container, false)
-        val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
-        val recyclerView: RecyclerView = requireView().findViewById(R.id.recycler_view_items)
-        recyclerView.layoutManager = GridLayoutManager(context,3)
-        recyclerView.adapter = itemAdapter
 
         return view
     }
