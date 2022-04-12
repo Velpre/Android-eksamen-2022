@@ -60,7 +60,7 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
         db.insertAll(Image(bitmap))
         val result = db.getAllImages()
         println("result from db: $result")
-        shortToast(context, "Added to database")
+
     }
 
     // Gets the number of items in the list

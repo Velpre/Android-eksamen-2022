@@ -29,10 +29,11 @@
         <entry key="..\:/Users/veljk/Skrivebord/Dokumenter/Coding/Android Studio/StudentManager22/app/src/main/res/layout/fragment1.xml" value="0.1609375" />
         <entry key="..\:/Users/veljk/Skrivebord/Dokumenter/Coding/Android Studio/StudentManager22/app/src/main/res/layout/fragment2.xml" value="0.1609375" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21822916666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15364583333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment1.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/fragment2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_custom_row.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/saved_result.xml" value="0.1140625" />
       </map>
     </option>
   </component>

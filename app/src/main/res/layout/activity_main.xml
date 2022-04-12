@@ -21,16 +21,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="switchFragment"
-                android:tag="1"
-                android:text="Choose Image" />
-
+                android:tag="2"
+                android:text="Result" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="switchFragment"
-                android:tag="2"
-                android:text="Result" />
+                android:tag="3"
+                android:text="Saved" />
         </LinearLayout>
 
     </LinearLayout>
@@ -40,5 +39,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="switchFragment"
+            android:tag="1"
+            android:text="Choose Image" />
     </FrameLayout>
 </LinearLayout>

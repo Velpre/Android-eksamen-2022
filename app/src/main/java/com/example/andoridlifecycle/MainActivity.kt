@@ -45,7 +45,16 @@ class MainActivity : AppCompatActivity() {
                     "Fragment1"
                 )
                 .commit()
-        } else {
+        } else if (Integer.parseInt(v.getTag().toString()) == 3){
+            fragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.fragment_main,
+                    SavedResultFragment(),
+                    "SavedResultFragment"
+                )
+                .commit()
+        }else {
             if (hasServerResponse()) (
                     fragmentManager
                         .beginTransaction()
