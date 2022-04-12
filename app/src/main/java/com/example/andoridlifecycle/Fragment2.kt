@@ -36,13 +36,15 @@ class Fragment2() : Fragment() {
         AndroidNetworking.initialize(context)
 
         // Coroutines
-        GlobalScope.launch {
-            val urls = async {
-                loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
-            }
-            setUrlsOnMainThread(urls)
-            println(listOfUrls.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            val urls = loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
 
+           launch(Main){
+               delay(7000)
+               listOfUrls = urls
+               println(listOfUrls.toString())
+           }
+            //setUrlsOnMainThread(urls)
         }
     }// onCreate ends
 
@@ -60,7 +62,7 @@ class Fragment2() : Fragment() {
                             //val url = ImgUrl() - settes til klasse senere?
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("thumbnail_link")
-                            Log.i("url", url.toString())
+                           // Log.i("url", url.toString())
                             listOfUrls.add(url)
                         } catch (e: JSONException) {
                             e.printStackTrace()
@@ -97,9 +99,14 @@ class Fragment2() : Fragment() {
 
         // Setting up RCV with Grid.
         recyclerView.layoutManager = GridLayoutManager(context,3)
+
         // Adapter class is initialized and url list is passed.
+
         // TODO Tror listOfURls må passes async, altså etter res er kommet.
+
+
         val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
+
         // adapter instance is set to the recyclerview to inflate the items.
         recyclerView.adapter = itemAdapter
 

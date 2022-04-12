@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.andoridlifecycle.R
 import kotlinx.android.synthetic.main.item_custom_row.view.*
 
@@ -35,7 +36,7 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
 
         Glide.with(context)
             .load(url)
-            /*.diskCacheStrategy(DiskCacheStrategy.ALL)*/
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.placeholder)
             .into(holder.imageView)
     }
