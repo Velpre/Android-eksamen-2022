@@ -20,7 +20,6 @@ import kotlinx.coroutines.Dispatchers.Main
 import org.json.JSONArray
 import org.json.JSONException
 
-
 class Fragment2() : Fragment() {
 
     // global members
@@ -32,14 +31,12 @@ class Fragment2() : Fragment() {
         AndroidNetworking.initialize(context)
 
         // Coroutines
-        runBlocking {
             lifecycleScope.launch(Dispatchers.IO) {
-                val urls =
-                    async { loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png") }
+                val urls = loadDataApi("https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png")
 
                 launch(Main) {
-                    delay(5000)
-                    listOfUrls = urls.await()
+                    delay(7000)
+                    listOfUrls = urls
                     println(listOfUrls.toString())
                     val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
                     val recyclerView: RecyclerView =
@@ -50,7 +47,6 @@ class Fragment2() : Fragment() {
                 }
             }
 
-        }
     }// onCreate ends
 
     // Step 1: API CALL
