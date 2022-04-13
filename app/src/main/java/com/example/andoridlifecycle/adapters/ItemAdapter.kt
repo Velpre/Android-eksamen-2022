@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.andoridlifecycle.R
+import com.example.andoridlifecycle.db.Image
+import com.example.andoridlifecycle.db.ImageBlobRepository
+import kotlinx.android.synthetic.main.fragment1.view.*
 import kotlinx.android.synthetic.main.item_custom_row.view.*
 
 class ItemAdapter(private val context: Context, private val urls: ArrayList<String>) :
@@ -33,13 +36,18 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
 
         // her kommer et array av bildeadresser
         val url = urls[position]
-        // Glide med url
 
+
+        // Glide med url
         Glide.with(context)
             .load(url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.placeholder)
-            .into(holder.imageView)
+            .into(holder.imageView).view.setOnClickListener{
+                println("clicked")
+            /*   val db = ImageBlobRepository(context)
+                db.insertAll(Image())*/
+            }
     }
 
     // Gets the number of items in the list
