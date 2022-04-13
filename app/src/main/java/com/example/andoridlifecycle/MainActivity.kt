@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     "Fragment1"
                 )
                 .commit()
-        } else {
+        } else if(Integer.parseInt(v.getTag().toString()) == 2) {
             if (hasServerResponse()) (
                     fragmentManager
                         .beginTransaction()
@@ -60,6 +60,15 @@ class MainActivity : AppCompatActivity() {
                     ) else {
                 shortToast(applicationContext, "waiting for server response!")
             }
+        }else if(Integer.parseInt(v.getTag().toString()) == 3){
+            fragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.fragment_main,
+                    Fragment3(),
+                    "Fragment3"
+                )
+                .commit()
         }
     }
 

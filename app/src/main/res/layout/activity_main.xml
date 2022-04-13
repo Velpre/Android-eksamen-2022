@@ -28,11 +28,20 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="15dp"
                 android:layout_weight="1"
                 android:onClick="switchFragment"
                 android:tag="2"
                 android:text="Result"
+                tools:visibility="visible" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:onClick="switchFragment"
+                android:tag="3"
+                android:text="Images from DB"
                 tools:visibility="visible" />
         </LinearLayout>
 
