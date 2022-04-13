@@ -73,19 +73,16 @@ class MainActivity : AppCompatActivity() {
     private fun hasServerResponse() = this::url.isInitialized
 
     fun submit(view: View) {
-        var imageUri =
-            (fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment).imageUri.toString()
-        //var rect = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
-        //var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.width
-        //var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.height
-        val croppedImage =
-            (fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment).image.croppedImage
 
-        // sending post to server.
-        uploadImage(createFileFromBitmap(croppedImage))
+        val findView = fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment
 
-        Log.i("fileImg", imageUri)
-        Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+        if (findView.imageUri == null){
+            Toast.makeText(this, "Please choose image", Toast.LENGTH_SHORT).show()
+        }else{
+            var croppedImage = findView.image.croppedImage
+            uploadImage(createFileFromBitmap(croppedImage))
+            Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // Sends file to server
