@@ -83,7 +83,8 @@ class MainActivity : AppCompatActivity() {
         }else{
             var croppedImage = findView.image.croppedImage
             uploadImage(createFileFromBitmap(croppedImage))
-            Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(this, "Check Result for similar images", Toast.LENGTH_SHORT).show()
         }
     }
 
