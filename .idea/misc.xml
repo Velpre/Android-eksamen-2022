@@ -32,7 +32,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/fragment1.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/fragment2.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment3.xml" value="0.1621376811594203" />
         <entry key="app/src/main/res/layout/item_custom_row.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/item_custom_row2.xml" value="0.1621376811594203" />
       </map>
     </option>
   </component>
