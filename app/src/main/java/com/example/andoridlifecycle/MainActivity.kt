@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     } // onCreate ends
 
-
     fun switchFragment(v: View) {
         fragmentManager = supportFragmentManager
 

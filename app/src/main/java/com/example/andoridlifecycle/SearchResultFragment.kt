@@ -27,14 +27,16 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
 
-        loadDataApi(imageURL)
+        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/bing")
+        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/tineye")
+        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/google")
 
     }// onCreate ends
 
     // Step 1: API CALL
-    private fun loadDataApi(url: String) {
-        AndroidNetworking.get("http://api-edu.gtl.ai/api/v1/imagesearch/bing")
-            .addQueryParameter("url", url)
+    private fun loadDataApi(imgUrl: String, url: String) {
+        AndroidNetworking.get(url)
+            .addQueryParameter("url", imgUrl)
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
@@ -48,7 +50,6 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
                                 requireView().findViewById(R.id.recycler_view_items)
                             recyclerView.layoutManager = GridLayoutManager(context, 3)
                             recyclerView.adapter = itemAdapter
-
                         } catch (e: JSONException) {
                             e.printStackTrace()
                             Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
