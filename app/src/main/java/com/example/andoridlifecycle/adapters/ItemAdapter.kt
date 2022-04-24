@@ -1,16 +1,21 @@
 package com.example.andoridlifecycle.adapters
 
+import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.andoridlifecycle.FullscreenActivity
+import com.example.andoridlifecycle.MainActivity
 import com.example.andoridlifecycle.R
 import com.example.andoridlifecycle.db.Image
 import com.example.andoridlifecycle.db.ImageRepository
@@ -45,20 +50,17 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.placeholder)
             .into(holder.imageView).view.setOnClickListener {
-                thread {
+                val intent =Intent(context, FullscreenActivity::class.java)
+                intent.putExtra("image",url)
+                context.startActivity(intent)
+
+            /*  thread {
                     imageToDb((it as AppCompatImageView).drawable)
-                }
+                }*/
             }
     }
 
-    private fun imageToDb(inImg: Drawable) {
-        val bitmap = inImg.toBitmap()
-        val db = ImageRepository(context)
-        db.insertAll(Image(bitmap))
-        val result = db.getAllImages()
-        println("result from db: $result")
 
-    }
 
     // Gets the number of items in the list
     override fun getItemCount(): Int {
