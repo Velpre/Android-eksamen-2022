@@ -19,7 +19,6 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var imgUrlFromServer: String;
     private lateinit var fragmentManager: FragmentManager
@@ -35,7 +34,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setButtonOnClick() {
-        navigationButtons = listOf(findViewById(R.id.b1), findViewById(R.id.b2), findViewById(R.id.b3))
+        navigationButtons =
+            listOf(findViewById(R.id.b1), findViewById(R.id.b2), findViewById(R.id.b3))
 
         navigationButtons.forEach {
             it.setOnClickListener { button ->
@@ -56,16 +56,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToFragment(v: View) {
         val tag = Integer.parseInt(v.tag.toString())
+        navigationButtons[1].isEnabled = false
 
         when (tag) {
             1 -> switchFragment(UploadImageFragment())
             3 -> switchFragment(SavedResultFragment())
             else -> {
-                if (hasServerResponse()) {
-                    switchFragment(SearchResultFragment(imgUrlFromServer))
-                } else {
-                    shortToast(applicationContext, "waiting for server response!")
-                }
+                switchFragment(SearchResultFragment(imgUrlFromServer))
             }
         }
     }
@@ -81,8 +78,6 @@ class MainActivity : AppCompatActivity() {
             )
             .commit()
     }
-
-    private fun hasServerResponse() = this::imgUrlFromServer.isInitialized
 
     fun submit(view: View) {
         val uploadImageFragment =
@@ -113,8 +108,10 @@ class MainActivity : AppCompatActivity() {
             .getAsString(object : StringRequestListener {
                 override fun onResponse(response: String?) {
                     println("response: $response")
+
                     if (response != null) {
                         imgUrlFromServer = response
+                        navigationButtons[1].isEnabled = true
                     }
                 }
 
