@@ -60,14 +60,7 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
             }
     }
 
-    private fun imageToDb(inImg: Drawable) {
-        val bitmap = inImg.toBitmap()
-        val db = ImageRepository(context)
-        db.insertAll(Image(bitmap))
-        val result = db.getAllImages()
-        println("result from db: $result")
 
-    }
 
     // Gets the number of items in the list
     override fun getItemCount(): Int {
