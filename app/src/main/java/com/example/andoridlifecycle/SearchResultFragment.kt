@@ -50,6 +50,7 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
+                    spinner.visibility = View.GONE;
                     for (i in 0 until response.length()) {
                         try {
                             val obj = response.getJSONObject(i)
