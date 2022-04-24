@@ -1,7 +1,6 @@
 package com.example.andoridlifecycle
 
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +17,7 @@ import com.example.andoridlifecycle.adapters.ItemAdapter
 import org.json.JSONArray
 import org.json.JSONException
 
-
-
 class SearchResultFragment(private var imageURL: String) : Fragment() {
-
-    // global members
     private var listOfUrls = ArrayList<String>()
     private lateinit var spinner: ProgressBar
 
@@ -30,27 +25,25 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
 
-        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/bing")
-        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/tineye")
-        loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/google")
-
-    }// onCreate ends
+        doImageSearch(imageURL, "bing")
+        doImageSearch(imageURL, "tineye")
+        doImageSearch(imageURL, "google")
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         spinner = view.findViewById(R.id.progressSpinner)
 
-        spinner.visibility = View.VISIBLE;
+        showSpinner()
     }
 
-    // Step 1: API CALL
-    private fun loadDataApi(imgUrl: String, url: String) {
-        AndroidNetworking.get(url)
+    private fun doImageSearch(imgUrl: String, searchProvider: String) {
+        AndroidNetworking.get(API_URL + searchProvider)
             .addQueryParameter("url", imgUrl)
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
-                    spinner.visibility = View.GONE;
+                    hideSpinner()
                     for (i in 0 until response.length()) {
                         try {
                             val obj = response.getJSONObject(i)
@@ -64,10 +57,12 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
                         } catch (e: JSONException) {
                             e.printStackTrace()
-                            Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }
                 }
+
                 override fun onError(anError: ANError) {
                     Log.e("error in fetching data", anError.toString())
                     Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
@@ -75,18 +70,22 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
             })
     }
 
+
     // setting the fragment..I THINK hehe.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
-
-        val view = inflater.inflate(R.layout.fragment2, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment2, container, false)
     }
 
+    private fun showSpinner() {
+        spinner.visibility = View.VISIBLE;
+    }
+
+    private fun hideSpinner() {
+        spinner.visibility = View.GONE;
+    }
 }
 

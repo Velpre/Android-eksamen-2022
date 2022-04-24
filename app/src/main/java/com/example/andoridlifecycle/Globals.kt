@@ -35,3 +35,6 @@ fun getBitmap(context: Context, id: Int?, uri: String?, decoder: (Context, Int?,
 fun shortToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }
+
+const val API_URL: String = "http://api-edu.gtl.ai/api/v1/imagesearch/"
+const val UPLOAD_URL: String = API_URL + "upload"

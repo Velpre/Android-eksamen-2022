@@ -119,21 +119,18 @@ class MainActivity : AppCompatActivity() {
         if (findView.imageUri == null){
             Toast.makeText(this, "Please choose image", Toast.LENGTH_SHORT).show()
         }else{
-            var croppedImage = findView.image.croppedImage
+            val croppedImage = findView.image.croppedImage
             uploadImage(createFileFromBitmap(croppedImage))
             Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
         }
     }
 
     // Sends file to server
-    fun uploadImage(file: File) {
-        // mock api
-        val mock = "https://infinite-river-92056.herokuapp.com/upload"
-
+    private fun uploadImage(file: File) {
         // actual api
         val apiUrl = "http://api-edu.gtl.ai/api/v1/imagesearch/upload"
 
-        AndroidNetworking.upload(apiUrl)
+        AndroidNetworking.upload(UPLOAD_URL)
             .addMultipartFile("image", file)
             .setTag("uploadTest")
             .setPriority(Priority.HIGH)
