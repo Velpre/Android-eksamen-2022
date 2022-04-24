@@ -1,9 +1,11 @@
 package com.example.andoridlifecycle
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -22,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var url: String;
     private lateinit var fragmentManager: FragmentManager
+    private lateinit var b1 : Button;
+    private lateinit var b2 : Button;
+    private lateinit var b3 : Button;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +34,48 @@ class MainActivity : AppCompatActivity() {
 
         AndroidNetworking.initialize(applicationContext)
 
+        b1 = findViewById(R.id.b1)
+        b2 = findViewById(R.id.b2)
+        b3 = findViewById(R.id.b3)
+
+        switchColor()
 
     } // onCreate ends
+
+
+    fun switchColor(){
+        b1.setOnClickListener(){
+            resetColors();
+            b1.setBackgroundColor(Color.parseColor("#152238"))
+            switchFragment(it)
+        }
+
+        b2.setOnClickListener(){
+            resetColors();
+            b2.setBackgroundColor(Color.parseColor("#152238"))
+            switchFragment(it)
+        }
+
+        b3.setOnClickListener() {
+            resetColors();
+            b3.setBackgroundColor(Color.parseColor("#152238"))
+            switchFragment(it)
+        }
+    }
+
+    fun resetColors(){
+        b1.setBackgroundColor(Color.parseColor("#8B4000"))
+        b2.setBackgroundColor(Color.parseColor("#8B4000"))
+        b3.setBackgroundColor(Color.parseColor("#8B4000"))
+    }
+
 
 
     fun switchFragment(v: View) {
         fragmentManager = supportFragmentManager
 
         if (Integer.parseInt(v.getTag().toString()) == 1) {
+
             fragmentManager
                 .beginTransaction()
                 .replace(
@@ -46,6 +85,8 @@ class MainActivity : AppCompatActivity() {
                 )
                 .commit()
         } else if (Integer.parseInt(v.getTag().toString()) == 3) {
+
+
             fragmentManager
                 .beginTransaction()
                 .replace(

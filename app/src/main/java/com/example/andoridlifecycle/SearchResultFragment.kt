@@ -34,7 +34,6 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/tineye")
         loadDataApi(imageURL,"http://api-edu.gtl.ai/api/v1/imagesearch/google")
 
-
     }// onCreate ends
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
