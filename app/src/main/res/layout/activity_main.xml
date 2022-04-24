@@ -37,12 +37,11 @@
                 android:id="@+id/b1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/orange"
-                android:onClick="switchFragment"
                 android:tag="1"
-                android:text="Choose Image" />
+                android:text="@string/choose_image" />
 
             <Button
                 android:id="@+id/b2"
@@ -50,10 +49,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/orange"
-                android:layout_marginRight="10dp"
-                android:onClick="switchFragment"
+                android:layout_marginEnd="10dp"
                 android:tag="2"
-                android:text="Result" />
+                android:text="@string/result" />
 
             <Button
                 android:id="@+id/b3"
@@ -61,9 +59,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/orange"
-                android:onClick="switchFragment"
                 android:tag="3"
-                android:text="Saved results" />
+                android:text="@string/saved_results" />
         </LinearLayout>
 
     </LinearLayout>
