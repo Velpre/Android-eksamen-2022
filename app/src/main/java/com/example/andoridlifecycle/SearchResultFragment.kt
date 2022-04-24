@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.androidnetworking.AndroidNetworking
 import android.util.Log
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,8 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
     // global members
     private var listOfUrls = ArrayList<String>()
+    private lateinit var spinner: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidNetworking.initialize(context)
@@ -33,6 +36,13 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
 
     }// onCreate ends
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        spinner = view.findViewById(R.id.progressSpinner)
+
+        spinner.visibility = View.VISIBLE;
+    }
 
     // Step 1: API CALL
     private fun loadDataApi(imgUrl: String, url: String) {
