@@ -10,6 +10,9 @@ interface ImageDao {
     @Query("SELECT * FROM image")
     fun getAll(): List<Image>
 
+    @Query("SELECT * FROM image WHERE id = :id")
+    fun getById(id: Int): Image
+
     @Insert
     fun insertAll(vararg images: Image)
 

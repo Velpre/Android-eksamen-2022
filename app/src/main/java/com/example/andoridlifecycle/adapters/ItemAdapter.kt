@@ -53,10 +53,6 @@ class ItemAdapter(private val context: Context, private val urls: ArrayList<Stri
                 val intent =Intent(context, FullscreenActivity::class.java)
                 intent.putExtra("image",url)
                 context.startActivity(intent)
-
-            /*  thread {
-                    imageToDb((it as AppCompatImageView).drawable)
-                }*/
             }
     }
 

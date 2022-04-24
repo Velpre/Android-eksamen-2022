@@ -29,6 +29,9 @@
             android:name=".FullscreenActivity"
             android:exported="false" />
         <activity
+            android:name=".FullscreenSavedActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>

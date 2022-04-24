@@ -30,6 +30,14 @@ class SavedResultFragment : Fragment() {
 
     }// onCreate ends
 
+    override fun onResume() {
+        super.onResume()
+
+        thread {
+            loadDataDb()
+        }
+    }
+
     // Step 1: API CALL
     private fun loadDataDb() {
         val repo = ImageRepository(requireContext())

@@ -1,6 +1,5 @@
 package com.example.andoridlifecycle
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,14 +28,11 @@ class FullscreenActivity : AppCompatActivity() {
         saveBtn = findViewById(R.id.save_btn)
         backBtn = findViewById(R.id.back_btn)
 
-
         Glide.with(applicationContext)
             .load(extras?.get("image"))
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.placeholder)
             .into(fullScreenImage)
-
-
 
         // onclick
         saveBtn.setOnClickListener{

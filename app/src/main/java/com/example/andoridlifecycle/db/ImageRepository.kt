@@ -13,4 +13,12 @@ class ImageRepository(context: Context) {
     fun insertAll(image: Image) {
         return db.insertAll(image)
     }
+
+    fun delete(image: Image) {
+        return db.delete(image)
+    }
+
+    fun getById(id: Int): Image {
+        return db.getById(id)
+    }
 }
