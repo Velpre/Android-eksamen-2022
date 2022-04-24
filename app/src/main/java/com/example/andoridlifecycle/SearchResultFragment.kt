@@ -39,7 +39,7 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        spinner = view.findViewById(R.id.progressBar)
+        spinner = view.findViewById(R.id.progressSpinner)
 
         spinner.visibility = View.VISIBLE;
     }
