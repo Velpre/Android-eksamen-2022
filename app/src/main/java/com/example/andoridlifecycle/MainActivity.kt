@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var url: String;
     private lateinit var fragmentManager: FragmentManager
-    private lateinit var b1 : Button;
-    private lateinit var b2 : Button;
-    private lateinit var b3 : Button;
+    private lateinit var b1: Button;
+    private lateinit var b2: Button;
+    private lateinit var b3: Button;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,44 +37,29 @@ class MainActivity : AppCompatActivity() {
         b2 = findViewById(R.id.b2)
         b3 = findViewById(R.id.b3)
 
-        switchColor()
+        setButtonOnClick(b1)
+        setButtonOnClick(b2)
+        setButtonOnClick(b3)
+    }
 
-    } // onCreate ends
-
-
-    fun switchColor(){
-        b1.setOnClickListener(){
-            resetColors();
-            b1.setBackgroundColor(Color.parseColor("#152238"))
-            switchFragment(it)
-        }
-
-        b2.setOnClickListener(){
-            resetColors();
-            b2.setBackgroundColor(Color.parseColor("#152238"))
-            switchFragment(it)
-        }
-
-        b3.setOnClickListener() {
-            resetColors();
-            b3.setBackgroundColor(Color.parseColor("#152238"))
+    private fun setButtonOnClick(button: Button) {
+        button.setOnClickListener {
+            resetColors()
+            it.setBackgroundColor(Color.parseColor("#152238"))
             switchFragment(it)
         }
     }
 
-    fun resetColors(){
+    private fun resetColors() {
         b1.setBackgroundColor(Color.parseColor("#8B4000"))
         b2.setBackgroundColor(Color.parseColor("#8B4000"))
         b3.setBackgroundColor(Color.parseColor("#8B4000"))
     }
 
-
-
-    fun switchFragment(v: View) {
+    private fun switchFragment(v: View) {
         fragmentManager = supportFragmentManager
 
-        if (Integer.parseInt(v.getTag().toString()) == 1) {
-
+        if (Integer.parseInt(v.tag.toString()) == 1) {
             fragmentManager
                 .beginTransaction()
                 .replace(
@@ -83,9 +68,7 @@ class MainActivity : AppCompatActivity() {
                     "Fragment1"
                 )
                 .commit()
-        } else if (Integer.parseInt(v.getTag().toString()) == 3) {
-
-
+        } else if (Integer.parseInt(v.tag.toString()) == 3) {
             fragmentManager
                 .beginTransaction()
                 .replace(
@@ -94,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     "Fragment3"
                 )
                 .commit()
-        }else {
+        } else {
             if (hasServerResponse()) (
                     fragmentManager
                         .beginTransaction()
@@ -116,9 +99,9 @@ class MainActivity : AppCompatActivity() {
 
         val findView = fragmentManager.findFragmentByTag("Fragment1") as UploadImageFragment
 
-        if (findView.imageUri == null){
+        if (findView.imageUri == null) {
             Toast.makeText(this, "Please choose image", Toast.LENGTH_SHORT).show()
-        }else{
+        } else {
             val croppedImage = findView.image.croppedImage
             uploadImage(createFileFromBitmap(croppedImage))
             Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
@@ -160,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     * writes array to file
     * returns file.
     * */
-    fun createFileFromBitmap(bitmap: Bitmap): File {
+    private fun createFileFromBitmap(bitmap: Bitmap): File {
         // unsure correct context!!!
         val f = File(applicationContext.filesDir, "img.png")
 
@@ -169,11 +152,11 @@ class MainActivity : AppCompatActivity() {
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 20 /*ignored for PNG*/, bos);
-        val bitmapdata: ByteArray = bos.toByteArray();
+        val bitmapData: ByteArray = bos.toByteArray();
 
         //write the bytes in file
         val fos = FileOutputStream(f);
-        fos.write(bitmapdata);
+        fos.write(bitmapData);
         fos.flush();
         fos.close();
         return f;

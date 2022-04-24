@@ -37,17 +37,24 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         showSpinner()
     }
 
-    private fun doImageSearch(imgUrl: String, searchProvider: String) {
+    private fun doImageSearch(imgUrlToSearch: String, searchProvider: String) {
         AndroidNetworking.get(API_URL + searchProvider)
-            .addQueryParameter("url", imgUrl)
+            .addQueryParameter("url", imgUrlToSearch)
             .build()
             .getAsJSONArray(object : JSONArrayRequestListener {
                 override fun onResponse(response: JSONArray) {
                     hideSpinner()
+
+                    // TODO: handle no results from server
+                    if(response.length() == 0) {
+                        Log.i("response", "No results from server from $searchProvider")
+                    }
+
                     for (i in 0 until response.length()) {
                         try {
                             val obj = response.getJSONObject(i)
-                            val url = obj.getString("thumbnail_link")
+                            val url = obj.getString("image_link")
+
                             listOfUrls.add(url)
                             val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
                             val recyclerView: RecyclerView =
@@ -70,8 +77,6 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
             })
     }
 
-
-    // setting the fragment..I THINK hehe.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,11 +86,11 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
     }
 
     private fun showSpinner() {
-        spinner.visibility = View.VISIBLE;
+        spinner.visibility = View.VISIBLE
     }
 
     private fun hideSpinner() {
-        spinner.visibility = View.GONE;
+        spinner.visibility = View.GONE
     }
 }
 
