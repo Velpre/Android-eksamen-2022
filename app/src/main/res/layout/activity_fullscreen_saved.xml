@@ -18,20 +18,23 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center|bottom">
+
         <Button
             android:id="@+id/delete_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="#C41E3A"
             android:layout_weight="0"
-            android:text="@string/delete"
-            android:layout_marginBottom="20dp"
-            />
+            android:text="@string/delete" />
+
         <Button
             android:id="@+id/back_btn_saved"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/back"
-            android:layout_weight="0"/>
+            android:layout_margin="20dp"
+            android:layout_weight="0"
+            android:text="@string/back" />
 
     </LinearLayout>
 </LinearLayout>

@@ -48,8 +48,8 @@ class UploadImageFragment : Fragment() {
 
             image.layoutParams = image.layoutParams.apply {
 
-                width = 500
-                height = 500
+                width = 900
+                height = 900
             }
 
             image.setImageBitmap(bitmap_image)
