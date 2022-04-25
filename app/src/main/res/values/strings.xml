@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Eksamen2022</string>
     <string name="save">Save</string>
-    <string name="back">Back to result</string>
+    <string name="link">Go to source</string>
+    <string name="back">Back</string>
     <string name="saved_results">Saved results</string>
     <string name="result">Result</string>
     <string name="choose_image">Choose Image</string>
