@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun resetColors() {
-        navigationButtons.forEach { it.setBackgroundColor(Color.parseColor("#8B4000")) }
+        navigationButtons.forEach { it.setBackgroundColor(Color.parseColor("#0C4160")) }
     }
 
     private fun navigateToFragment(v: View) {
