@@ -44,7 +44,7 @@ class UploadImageFragment : Fragment() {
             imageUri = it.data?.data.toString()
             println("uri $imageUri")
 
-            var bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+            val bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
 
             image.layoutParams = image.layoutParams.apply {
 

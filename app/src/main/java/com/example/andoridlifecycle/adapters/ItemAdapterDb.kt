@@ -32,7 +32,6 @@ class ItemAdapterDb(private val context: Context, private val images: List<Image
 
         holder.imageView.setOnClickListener {
             val intent = Intent(context, FullscreenSavedActivity::class.java)
-            //intent.putExtra("image", image.image)
             intent.putExtra("id", image.id)
 
             context.startActivity(intent)

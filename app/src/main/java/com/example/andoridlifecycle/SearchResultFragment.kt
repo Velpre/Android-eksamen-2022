@@ -37,6 +37,11 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         showSpinner()
     }
 
+    override fun onStop() {
+        super.onStop()
+        AndroidNetworking.cancelAll()
+    }
+
     private fun doImageSearch(imgUrlToSearch: String, searchProvider: String) {
         AndroidNetworking.get(API_URL + searchProvider)
             .addQueryParameter("url", imgUrlToSearch)

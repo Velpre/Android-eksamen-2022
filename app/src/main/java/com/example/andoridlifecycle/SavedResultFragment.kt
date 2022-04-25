@@ -18,16 +18,12 @@ import kotlin.concurrent.thread
 class SavedResultFragment : Fragment() {
     var itemAdapter: ItemAdapterDb? = null
 
-    // global members
-    private var listOfUrls = ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         thread {
             loadDataDb()
         }
-
-
     }// onCreate ends
 
     override fun onResume() {
