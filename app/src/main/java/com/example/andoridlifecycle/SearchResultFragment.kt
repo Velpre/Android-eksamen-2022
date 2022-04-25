@@ -18,7 +18,7 @@ import org.json.JSONArray
 import org.json.JSONException
 
 class SearchResultFragment(private var imageURL: String) : Fragment() {
-    private var listOfUrls = ArrayList<String>()
+    private var resultList = ArrayList<ImageResult>()
     private lateinit var spinner: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +52,14 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
                     for (i in 0 until response.length()) {
                         try {
+
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("image_link")
+                            val storeLink = obj.getString("store_link")
+                            val result =  ImageResult(url,storeLink)
+                            resultList.add(result)
 
-                            listOfUrls.add(url)
-                            val itemAdapter = ItemAdapter(requireContext(), listOfUrls)
+                            val itemAdapter = ItemAdapter(requireContext(), resultList)
                             val recyclerView: RecyclerView =
                                 requireView().findViewById(R.id.recycler_view_items)
                             recyclerView.layoutManager = GridLayoutManager(context, 3)

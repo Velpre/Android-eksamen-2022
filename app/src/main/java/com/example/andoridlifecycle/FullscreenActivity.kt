@@ -23,13 +23,16 @@ class FullscreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fullscreen)
         val extras = intent.extras
+        val bundle = intent.getBundleExtra("imgData")
+        val data = bundle?.getParcelable<ImageResult>("resultSet")
+
 
         fullScreenImage = findViewById(R.id.imageViewFullScreen)
         saveBtn = findViewById(R.id.save_btn)
         backBtn = findViewById(R.id.back_btn)
 
         Glide.with(applicationContext)
-            .load(extras?.get("image"))
+            .load(data?.url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .placeholder(R.drawable.placeholder)
             .into(fullScreenImage)
