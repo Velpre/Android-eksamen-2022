@@ -1,6 +1,8 @@
 package com.example.andoridlifecycle
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +19,7 @@ class FullscreenActivity : AppCompatActivity() {
     private lateinit var fullScreenImage : ImageView
     private lateinit var saveBtn : Button
     private lateinit var backBtn : Button
+    private lateinit var linkBtn : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,7 @@ class FullscreenActivity : AppCompatActivity() {
         fullScreenImage = findViewById(R.id.imageViewFullScreen)
         saveBtn = findViewById(R.id.save_btn)
         backBtn = findViewById(R.id.back_btn)
+        linkBtn = findViewById(R.id.link_btn)
 
         Glide.with(applicationContext)
             .load(data?.url)
@@ -47,6 +51,10 @@ class FullscreenActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener{
             finish()
+        }
+        linkBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data?.store_link))
+            startActivity(intent)
         }
 
     }
