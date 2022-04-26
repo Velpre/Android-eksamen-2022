@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Eksamen2022</string>
+    <string name="app_name">Root Finder</string>
     <string name="save">Save</string>
-    <string name="link">Go to source</string>
+    <string name="link">Go to root-source</string>
     <string name="back">Back</string>
     <string name="saved_results">Saved results</string>
     <string name="result">Result</string>
-    <string name="choose_image">Choose Image</string>
+    <string name="choose_image">Upload Image</string>
     <string name="app_icon_splash">App icon</string>
-    <string name="submit">Submit</string>
+    <string name="submit">Upload</string>
     <string name="uploaded_image">Uploaded image</string>
     <string name="image_result">image result</string>
     <string name="saved_image">saved image</string>

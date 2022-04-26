@@ -72,15 +72,14 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
                         } catch (e: JSONException) {
                             e.printStackTrace()
-                            Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT)
-                                .show()
+
                         }
                     }
                 }
 
                 override fun onError(anError: ANError) {
                     Log.e("error in fetching data", anError.toString())
-                    Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
                 }
             })
     }
