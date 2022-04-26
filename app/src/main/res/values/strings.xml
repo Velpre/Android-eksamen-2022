@@ -12,4 +12,5 @@
     <string name="image_result">image result</string>
     <string name="saved_image">saved image</string>
     <string name="delete">delete</string>
+    <string name="no_results_from_server">No results from server.</string>
 </resources>
