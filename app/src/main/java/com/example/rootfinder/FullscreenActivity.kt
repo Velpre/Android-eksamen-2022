@@ -21,7 +21,6 @@ class FullscreenActivity : AppCompatActivity() {
     private lateinit var backBtn: Button
     private lateinit var linkBtn: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fullscreen)
@@ -51,11 +50,11 @@ class FullscreenActivity : AppCompatActivity() {
         backBtn.setOnClickListener {
             finish()
         }
+
         linkBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data?.store_link))
             startActivity(intent)
         }
-
     }
 
     private fun imageToDb(inImg: Drawable, url: String) {

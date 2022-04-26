@@ -8,9 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-
 import com.androidnetworking.AndroidNetworking
-
 import androidx.fragment.app.FragmentManager
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
@@ -18,7 +16,6 @@ import com.androidnetworking.interfaces.StringRequestListener
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var imgUrlFromServer: String;
@@ -121,8 +118,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onError(error: ANError) {
-                    // handle error
-                    // TODO: display error to user
                     println("upload error: ${error.errorBody}")
                 }
             })

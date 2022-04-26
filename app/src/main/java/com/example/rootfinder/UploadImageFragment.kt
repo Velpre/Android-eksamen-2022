@@ -14,10 +14,6 @@ class UploadImageFragment : Fragment() {
     lateinit var image: CropImageView
     var imageUri: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,20 +33,20 @@ class UploadImageFragment : Fragment() {
         return view
     }
 
-    var startForResult =
+    private var startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
 
             imageUri = it.data?.data.toString()
             println("uri $imageUri")
 
-            val bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+            val bitmapImage = getBitmap(requireContext(), null, imageUri, ::uriToBitmap)
 
             image.layoutParams = image.layoutParams.apply {
                 width = MATCH_PARENT
                 height = MATCH_PARENT
             }
 
-            image.setImageBitmap(bitmap_image)
+            image.setImageBitmap(bitmapImage)
             image.background = null
         }
 

@@ -1,7 +1,6 @@
 package com.example.rootfinder
 
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import com.example.rootfinder.db.Image
 import com.example.rootfinder.db.ImageRepository
 import kotlin.concurrent.thread
 
-
 class SavedResultFragment : Fragment() {
     var itemAdapter: ItemAdapterDb? = null
 
@@ -23,8 +21,11 @@ class SavedResultFragment : Fragment() {
         thread {
             loadDataDb()
         }
-    }// onCreate ends
+    }
 
+    /*
+    * Reloading data when fragment is resumed.
+    * */
     override fun onResume() {
         super.onResume()
 
@@ -33,7 +34,9 @@ class SavedResultFragment : Fragment() {
         }
     }
 
-    // Step 1: API CALL
+    /*
+    * retries all images stored, updates UI on the UI-thread
+    * */
     private fun loadDataDb() {
         val repo = ImageRepository(requireContext())
         val result: List<Image> = repo.getAllImages()
@@ -47,15 +50,10 @@ class SavedResultFragment : Fragment() {
         }
     }
 
-    // setting the fragment..I THINK hehe.
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment3, container, false)
     }
-
 }
-

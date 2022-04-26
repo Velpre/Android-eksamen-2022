@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.item_custom_row.view.*
 class ItemAdapter(private val context: Context, private val data: ArrayList<ImageResult>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
-    //  inflating
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(context).inflate(
@@ -30,7 +29,7 @@ class ItemAdapter(private val context: Context, private val data: ArrayList<Imag
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        // displaying images + Passing data via intent to fullscreenActivity.
+        // displaying images + Passing data via intent/parcelable to fullscreenActivity.
         val url = data[position].url
         val imgData = data[position]
         Glide.with(context)
@@ -46,7 +45,6 @@ class ItemAdapter(private val context: Context, private val data: ArrayList<Imag
             }
     }
 
-    // Gets the number of items in the list
     override fun getItemCount(): Int {
         return data.size
     }
@@ -54,7 +52,6 @@ class ItemAdapter(private val context: Context, private val data: ArrayList<Imag
     // A ViewHolder describes an item view and metadata about its place within the RecyclerView.
     // getting views from xml file
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        // from custom xml layout
         val imageView: ImageView = view.iv_image
     }
 }

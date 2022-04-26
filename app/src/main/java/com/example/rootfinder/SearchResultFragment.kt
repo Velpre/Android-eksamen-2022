@@ -61,7 +61,6 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
                     for (i in 0 until response.length()) {
                         try {
-
                             val obj = response.getJSONObject(i)
                             val url = obj.getString("image_link")
                             val storeLink = obj.getString("store_link")

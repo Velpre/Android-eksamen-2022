@@ -4,16 +4,16 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class ImageResult(
-    val url :String,
+    val url: String,
     val store_link: String
-) : Parcelable{
-    constructor(parcel : Parcel):this(
-        parcel.readString() ?:"",
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
         parcel.readString() ?: ""
-
     )
+
     override fun describeContents(): Int {
-       return 0
+        return 0
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

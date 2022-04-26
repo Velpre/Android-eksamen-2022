@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory
 import androidx.room.TypeConverter
 import java.io.ByteArrayOutputStream
 
+/*
+* Class used to handle storing Bitmaps in Room.
+* */
 class Converter {
     @TypeConverter
     fun fromBitmap(image: Bitmap): ByteArray {
