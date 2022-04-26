@@ -9,11 +9,13 @@ import com.androidnetworking.AndroidNetworking
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONArrayRequestListener
 import com.example.andoridlifecycle.adapters.ItemAdapter
+import kotlinx.android.synthetic.main.fragment2.*
 import org.json.JSONArray
 import org.json.JSONException
 
@@ -50,9 +52,12 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
                 override fun onResponse(response: JSONArray) {
                     hideSpinner()
 
-                    // TODO: handle no results from server
                     if(response.length() == 0) {
+                        if(resultList.size == 0){
+                            no_result_text.isInvisible = false
+                        }
                         Log.i("response", "No results from server from $searchProvider")
+                        return
                     }
 
                     for (i in 0 until response.length()) {
@@ -72,15 +77,14 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
 
                         } catch (e: JSONException) {
                             e.printStackTrace()
-                            Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT)
-                                .show()
+
                         }
                     }
                 }
 
                 override fun onError(anError: ANError) {
                     Log.e("error in fetching data", anError.toString())
-                    Toast.makeText(context, "Problems getting data", Toast.LENGTH_SHORT).show()
+
                 }
             })
     }
@@ -89,7 +93,6 @@ class SearchResultFragment(private var imageURL: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment2, container, false)
     }
 

@@ -18,6 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/no_result_text"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_results_from_server"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_view_items"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler_view_items" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_items"
         android:layout_width="match_parent"

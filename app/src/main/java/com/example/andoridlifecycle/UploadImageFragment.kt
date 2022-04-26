@@ -1,7 +1,6 @@
 package com.example.andoridlifecycle
 
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,6 @@ class UploadImageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment1, container, false)
 
         image = view.findViewById<CropImageView>(R.id.image)
@@ -48,7 +46,6 @@ class UploadImageFragment : Fragment() {
             val bitmap_image = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
 
             image.layoutParams = image.layoutParams.apply {
-
                 width = MATCH_PARENT
                 height = MATCH_PARENT
             }
