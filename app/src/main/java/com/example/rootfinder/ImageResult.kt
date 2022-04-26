@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle
+package com.example.rootfinder
 
 import android.os.Parcel
 import android.os.Parcelable

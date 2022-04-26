@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle
+package com.example.rootfinder
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.andoridlifecycle.db.Image
-import com.example.andoridlifecycle.db.ImageRepository
+import com.example.rootfinder.db.Image
+import com.example.rootfinder.db.ImageRepository
 import kotlin.concurrent.thread
 
 class FullscreenActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle
+package com.example.rootfinder
 
 import android.os.Bundle
 
@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.andoridlifecycle.adapters.ItemAdapterDb
-import com.example.andoridlifecycle.db.Image
-import com.example.andoridlifecycle.db.ImageRepository
-import kotlinx.android.synthetic.main.fragment1.*
+import com.example.rootfinder.adapters.ItemAdapterDb
+import com.example.rootfinder.db.Image
+import com.example.rootfinder.db.ImageRepository
 import kotlin.concurrent.thread
 
 

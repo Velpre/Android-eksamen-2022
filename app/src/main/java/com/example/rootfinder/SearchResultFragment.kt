@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle
+package com.example.rootfinder
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,12 @@ import androidx.fragment.app.Fragment
 import com.androidnetworking.AndroidNetworking
 import android.util.Log
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONArrayRequestListener
-import com.example.andoridlifecycle.adapters.ItemAdapter
+import com.example.rootfinder.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.fragment2.*
 import org.json.JSONArray
 import org.json.JSONException

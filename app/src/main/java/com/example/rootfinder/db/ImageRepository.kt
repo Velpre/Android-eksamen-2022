@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.db
+package com.example.rootfinder.db
 
 import android.content.Context
 

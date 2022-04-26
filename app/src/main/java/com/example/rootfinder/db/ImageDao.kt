@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.db
+package com.example.rootfinder.db
 
 import androidx.room.Dao
 import androidx.room.Delete

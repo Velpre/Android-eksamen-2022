@@ -1,14 +1,11 @@
-package com.example.andoridlifecycle
+package com.example.rootfinder
 
-import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.andoridlifecycle.db.Image
-import com.example.andoridlifecycle.db.ImageRepository
+import com.example.rootfinder.db.Image
+import com.example.rootfinder.db.ImageRepository
 import kotlin.concurrent.thread
 
 class FullscreenSavedActivity : AppCompatActivity() {

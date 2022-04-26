@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.adapters
+package com.example.rootfinder.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -10,9 +10,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.andoridlifecycle.FullscreenActivity
-import com.example.andoridlifecycle.ImageResult
-import com.example.andoridlifecycle.R
+import com.example.rootfinder.FullscreenActivity
+import com.example.rootfinder.ImageResult
+import com.example.rootfinder.R
 import kotlinx.android.synthetic.main.item_custom_row.view.*
 
 class ItemAdapter(private val context: Context, private val data: ArrayList<ImageResult>) :

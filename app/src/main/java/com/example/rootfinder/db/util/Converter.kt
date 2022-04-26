@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.db.util
+package com.example.rootfinder.db.util
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

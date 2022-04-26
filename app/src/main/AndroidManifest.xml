@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.andoridlifecycle">
+    package="com.example.rootfinder">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.example.rootfinder.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme"
             android:exported="true">
             <intent-filter>
@@ -26,13 +26,13 @@
         </activity>
 
         <activity
-            android:name=".FullscreenActivity"
+            android:name="com.example.rootfinder.FullscreenActivity"
             android:exported="false" />
         <activity
-            android:name=".FullscreenSavedActivity"
+            android:name="com.example.rootfinder.FullscreenSavedActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.rootfinder.MainActivity"
             android:exported="true">
         </activity>
     </application>

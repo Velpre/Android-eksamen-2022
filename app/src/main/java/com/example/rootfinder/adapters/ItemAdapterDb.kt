@@ -1,4 +1,4 @@
-package com.example.andoridlifecycle.adapters
+package com.example.rootfinder.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.andoridlifecycle.FullscreenSavedActivity
-import com.example.andoridlifecycle.R
-import com.example.andoridlifecycle.db.Image
+import com.example.rootfinder.FullscreenSavedActivity
+import com.example.rootfinder.R
+import com.example.rootfinder.db.Image
 import kotlinx.android.synthetic.main.item_custom_row2.view.*
 
 class ItemAdapterDb(private val context: Context, private val images: List<Image>) :
