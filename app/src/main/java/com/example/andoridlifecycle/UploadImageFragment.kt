@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.edmodo.cropper.CropImageView
@@ -48,12 +49,12 @@ class UploadImageFragment : Fragment() {
 
             image.layoutParams = image.layoutParams.apply {
 
-                width = 600
-                height = 600
+                width = MATCH_PARENT
+                height = MATCH_PARENT
             }
 
             image.setImageBitmap(bitmap_image)
-            image.background = BitmapDrawable(resources, bitmap_image)
+            image.background = null
         }
 
 }
