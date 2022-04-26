@@ -16,19 +16,18 @@ import com.example.rootfinder.db.ImageRepository
 import kotlin.concurrent.thread
 
 class FullscreenActivity : AppCompatActivity() {
-    private lateinit var fullScreenImage : ImageView
-    private lateinit var saveBtn : Button
-    private lateinit var backBtn : Button
-    private lateinit var linkBtn : Button
+    private lateinit var fullScreenImage: ImageView
+    private lateinit var saveBtn: Button
+    private lateinit var backBtn: Button
+    private lateinit var linkBtn: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fullscreen)
-        val extras = intent.extras
+
         val bundle = intent.getBundleExtra("imgData")
         val data = bundle?.getParcelable<ImageResult>("resultSet")
-
 
         fullScreenImage = findViewById(R.id.imageViewFullScreen)
         saveBtn = findViewById(R.id.save_btn)
@@ -42,14 +41,14 @@ class FullscreenActivity : AppCompatActivity() {
             .into(fullScreenImage)
 
         // onclick
-        saveBtn.setOnClickListener{
-            thread{
-            imageToDb(fullScreenImage.drawable)
+        saveBtn.setOnClickListener {
+            thread {
+                imageToDb(fullScreenImage.drawable, data?.store_link!!)
             }
-            Toast.makeText(applicationContext,"imaged saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "imaged saved", Toast.LENGTH_SHORT).show()
         }
 
-        backBtn.setOnClickListener{
+        backBtn.setOnClickListener {
             finish()
         }
         linkBtn.setOnClickListener {
@@ -58,10 +57,11 @@ class FullscreenActivity : AppCompatActivity() {
         }
 
     }
-    private fun imageToDb(inImg: Drawable) {
+
+    private fun imageToDb(inImg: Drawable, url: String) {
         val bitmap = inImg.toBitmap()
         val db = ImageRepository(applicationContext)
-        db.insertAll(Image(bitmap))
+        db.insertAll(Image(bitmap, url))
         val result = db.getAllImages()
         println("result from db: $result")
 

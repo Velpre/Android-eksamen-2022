@@ -10,14 +10,15 @@
         android:id="@+id/imageViewFullScreenSaved"
         android:layout_width="fill_parent"
         android:layout_height="400dp"
-        android:scaleType="fitCenter"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter" />
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center|bottom">
+        android:gravity="center|bottom"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/delete_btn"
@@ -27,6 +28,12 @@
             android:backgroundTint="#C41E3A"
 
             android:text="@string/delete" />
+
+        <Button
+            android:id="@+id/link_btn_saved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/link" />
 
         <Button
             android:id="@+id/back_btn_saved"

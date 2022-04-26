@@ -1,5 +1,7 @@
 package com.example.rootfinder
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -12,6 +14,7 @@ class FullscreenSavedActivity : AppCompatActivity() {
     private lateinit var fullScreenImage: ImageView
     private lateinit var deleteBtn: Button
     private lateinit var backBtn: Button
+    private lateinit var rootBtn: Button
     private lateinit var image: Image
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +25,7 @@ class FullscreenSavedActivity : AppCompatActivity() {
         fullScreenImage = findViewById(R.id.imageViewFullScreenSaved)
         deleteBtn = findViewById(R.id.delete_btn)
         backBtn = findViewById(R.id.back_btn_saved)
+        rootBtn = findViewById(R.id.link_btn_saved)
 
         thread {
             getImage(extras?.get("id") as Int)
@@ -35,6 +39,11 @@ class FullscreenSavedActivity : AppCompatActivity() {
                 deleteImage()
             }
             finish()
+        }
+
+        rootBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(image.rootSource))
+            startActivity(intent)
         }
 
         backBtn.setOnClickListener { finish() }

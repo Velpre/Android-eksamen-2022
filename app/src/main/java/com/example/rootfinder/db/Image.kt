@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "image")
 data class Image(
-    val image: Bitmap
+    val image: Bitmap,
+    val rootSource: String
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
