@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToFragment(v: View) {
         val tag = Integer.parseInt(v.tag.toString())
-
+        navigationButtons[1].isEnabled = false
         when (tag) {
             1 -> switchFragment(UploadImageFragment())
             3 -> switchFragment(SavedResultFragment())
@@ -115,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(response: String?) {
                     println("response: $response")
                     if (response != null) {
+                        navigationButtons[1].isEnabled = true
                         imgUrlFromServer = response
                     }
                 }
